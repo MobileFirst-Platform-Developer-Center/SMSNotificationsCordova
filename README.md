@@ -1,14 +1,19 @@
 IBM MobileFirst Platform Foundation
 ===
 ## SMSNotificationsCordova
-A sample application demonstrating use of push notifications in Cordova applications.
+A sample application demonstrating use of SMS notifications in Cordova applications.
 
 ### Tutorials
-
+https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sms-notifications-in-cordova
 
 ### Usage
 
-
+1. From a **Command-line**, navigate to the project's root folder.
+2. Add a platform using the `cordova platform add` command.
+3. Register the application by running the command: `mfpdev app register`.
+4. Add a scope mapping for the element `push.mobileclient`.
+5. In the MobileFirst Operations Console, setup the MobileFirst Server with either GCM details or APNS certificate, and add tags.
+6. Run the application by running the `cordova run` command.
 
 Notes:
 
