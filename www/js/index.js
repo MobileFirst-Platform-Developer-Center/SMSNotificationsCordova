@@ -44,46 +44,46 @@ function wlCommonInit(){
 
     document.getElementById("registerDevice").addEventListener("click", registerDevice);
     document.getElementById("unregister").addEventListener("click", unregisterDevice);
-    document.getElementById("phone").addEventListener()
+    document.getElementById("phone").addEventListener();
 
 }
 
 
 function registerDevice() {
-var phoneNumber = prompt("Enter Your 10 digit phone number");
-if(phoneNumber != null && phoneNumber!="" && /^\d+$/.test(phoneNumber)) {
-    var options = {};
-    options.phoneNumber = phoneNumber;
-    MFPPush.registerDevice(options
-    , function(successResponse) {
-        alert("Successfully registered");
-        enableButtons();
-    }, function(failureResponse) {
-        alert("Failed to register");
-    });
-    return true;
-}
-else {
-alert("Failed to register, You have entered invalid number");
-}
+    var phoneNumber = prompt("Enter Your 10 digit phone number");
+    if(phoneNumber !== null && phoneNumber!== "" && /^\d+$/.test(phoneNumber)) {
+        var options = {};
+        options.phoneNumber = phoneNumber;
+        MFPPush.registerDevice(options, function(successResponse) {
+                navigator.notification.alert("Successfully registered");
+                enableButtons();
+            }, function(failureResponse) {
+                navigator.notification.alert("Failed to register");
+            });
+            
+        return true;
+    }
+    else {
+        navigator.notification.alert("Failed to register, You have entered invalid number");
+    }
 }
 
 
 
 function unregisterDevice() {
     MFPPush.unregisterDevice(
-      function(successResponse) {
-           alert("Unregistered successfully");
-           disableButtons();
-      },
-      function(){
-           alert("Failed to unregister");
-      }
+        function(successResponse) {
+            navigator.notification.alert("Unregistered successfully");
+            disableButtons();
+        },
+        function(){
+            navigator.notification.alert("Failed to unregister");
+        }
     );
 }
 
 var notificationReceived = function(message) {
-    alert (JSON.stringify(message));
+    navigator.notification.alert (JSON.stringify(message));
 };
 
 function enableButtons() {
@@ -93,5 +93,3 @@ function enableButtons() {
 function disableButtons(){
     document.getElementById("unregister").disabled = true;
 }
-
-
